@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     const account = document.getElementById("account")
+    const account1 = document.getElementById("account1")
     const close = document.getElementById("close")
     const auth = document.getElementById("auth")
     const over = document.getElementById("over")
@@ -63,6 +64,16 @@ document.addEventListener("DOMContentLoaded", function () {
         auth.classList.remove("auth-window-active")
     })
 
+    account1.addEventListener("click", function () {
+        auth.classList.toggle("auth-window-active")
+    })
+    if (!account1.contains(event.target) && event.target !== auth) {
+        auth.classList.remove("auth-window-active")
+    }
+    account1.addEventListener("click", function () {
+        over.classList.toggle("over-active")
+    })
+
     account.addEventListener("click", function () {
         over.classList.toggle("over-active")
     })
@@ -72,7 +83,50 @@ document.addEventListener("DOMContentLoaded", function () {
     close.addEventListener("click", function () {
         over.classList.remove("over-active")
     })
-    
 
+    const btn_reg = document.getElementById("btn-reg")
+    const btn_auth = document.getElementById("btn-auth")
+    const reg = document.getElementById("reg")
+    const close_reg = document.getElementById("close-reg")
 
+    btn_reg.addEventListener("click", function () {
+        reg.classList.toggle("reg-window-active")
+    })
+    btn_reg.addEventListener("click", function () {
+        auth.classList.remove("auth-window-active")
+    })
+    if (!btn_reg.contains(event.target) && event.target !== reg) {
+        reg.classList.remove("reg-window-active")
+    }
+    close_reg.addEventListener("click", function () {
+        reg.classList.remove("reg-window-active")
+    })
+    close_reg.addEventListener("click", function () {
+        over.classList.remove("over-active")
+    })
+
+    btn_auth.addEventListener("click", function () {
+        reg.classList.remove("reg-window-active")
+    })
+    btn_auth.addEventListener("click", function () {
+        auth.classList.toggle("auth-window-active")
+    })
+    if (!btn_auth.contains(event.target) && event.target !== auth) {
+        auth.classList.remove("auth-window-active")
+    }
+    close.addEventListener("click", function () {
+        over.classList.remove("over-active")
+    })
+
+    var ru_lan = document.getElementById("ru-lan");
+    var button_language = document.getElementById("button-language");
+    var ru_cnt = document.getElementById("ru-cnt");
+    var button_country = document.getElementById("button-country");
+
+    ru_lan.addEventListener("click", function () {
+        button_language.innerHTML = "Русский";
+    });
+    ru_cnt.addEventListener("click", function () {
+        button_country.innerHTML = "Россия";
+    });
 })

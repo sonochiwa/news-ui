@@ -2,41 +2,82 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/public/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doc</title>
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-<div id="over" class="overlay">
-    <header class="header">
-        <div class="container">
-            <div class="header-left">
-                <a class="logo" href="/">News 4 You</a>
-            </div>
+    <div id="over" class="overlay">
 
-            <div class="header-search">
-                <div class="header-left-inner">
-                    <a class="logo" href="/">N4Y</a>
-                </div>
-                <div class="header-search-inner">
-                    <img class="svg" src="public/img/icon-search.svg" draggable="false">
-                    <input id="search-input" placeholder="Поиск" size="32">
-                    <input id="search-input-small" placeholder="Поиск" size="22">
+        <header class="header">
+            <div class="container">
+                <div class="header-left">
+                    <a class="logo" href="/">News 4 You</a>
                 </div>
 
-                <div class="header-right-search">
+                <div class="header-search">
+                    <div class="header-left-inner">
+                        <a class="logo" href="/">N4Y</a>
+                    </div>
+                    <div class="header-search-inner">
+                        <img class="svg" src="img/icon-search.svg" draggable="false">
+                        <input id="search-input" placeholder="Поиск" size="32">
+                        <input id="search-input-small" placeholder="Поиск" size="22">
+                    </div>
+
+                    <div class="header-right-search">
+                        <div class="header-right-languages">
+                            <button id="btn1" class="btn-language">Язык</button>
+                            <div class="clear-fix"></div>
+                            <ul id="lng1" class="language">
+                                <li><a href="#">Русский</a></li>
+                                <li><a href="#">Английский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="header-right-languages">
+                            <button id="button1" class="btn-language">Страна</button>
+                            <div class="clear-fix"></div>
+                            <ul id="language1" class="language">
+                                <li><a href="#">Россия</a></li>
+                                <li><a href="#">США</a></li>
+                                <li><a href="#">Португалия</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                                <li><a href="#">Португальский</a></li>
+                            </ul>
+                        </div>
+                        <button id="account" class="account"></button>
+                    </div>
+                </div>
+
+                <div class="header-right">
                     <div class="header-right-languages">
-                        <button id="btn1" class="btn-language">Язык</button>
+                        <button id="button-language" class="btn-language">Язык</button>
                         <div class="clear-fix"></div>
-                        <ul id="lng1" class="language">
-                            <li><a href="#">Русский</a></li>
+                        <ul class="language">
+                            <li id="ru-lan"><a href="#">Русский</a></li>
                             <li><a href="#">Английский</a></li>
                             <li><a href="#">Португальский</a></li>
                             <li><a href="#">Португальский</a></li>
@@ -51,10 +92,10 @@
                     </div>
 
                     <div class="header-right-languages">
-                        <button id="button1" class="btn-language">Страна</button>
+                        <button id="button-country" class="btn-language">Страна</button>
                         <div class="clear-fix"></div>
-                        <ul id="language1" class="language">
-                            <li><a href="#">Россия</a></li>
+                        <ul class="language">
+                            <li id="ru-cnt"><a href="#">Россия</a></li>
                             <li><a href="#">США</a></li>
                             <li><a href="#">Португалия</a></li>
                             <li><a href="#">Португальский</a></li>
@@ -67,141 +108,129 @@
                             <li><a href="#">Португальский</a></li>
                         </ul>
                     </div>
-                    <button id="account" class="account"></button>
+                    <button id="account1" class="account"></button>
                 </div>
             </div>
+        </header>
 
-            <div class="header-right">
-                <div class="header-right-languages">
-                    <button class="btn-language">Язык</button>
-                    <div class="clear-fix"></div>
-                    <ul class="language">
-                        <li><a href="#">Русский</a></li>
-                        <li><a href="#">Английский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                    </ul>
-                </div>
+        <div class="header-down">
+            <div class="header-right-languages">
+                <button id="btn2" class="btn-language">Язык</button>
+                <div class="clear-fix"></div>
+                <ul id="lng2" class="language">
+                    <li><a href="#">Русский</a></li>
+                    <li><a href="#">Английский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                </ul>
+            </div>
 
-                <div class="header-right-languages">
-                    <button class="btn-language">Страна</button>
-                    <div class="clear-fix"></div>
-                    <ul class="language">
-                        <li><a href="#">Россия</a></li>
-                        <li><a href="#">США</a></li>
-                        <li><a href="#">Португалия</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                        <li><a href="#">Португальский</a></li>
-                    </ul>
-                </div>
-                <button class="account"></button>
+            <div class="header-right-languages">
+                <button id="button2" class="btn-language">Страна</button>
+                <div class="clear-fix"></div>
+                <ul id="language2" class="language">
+                    <li><a href="#">Россия</a></li>
+                    <li><a href="#">США</a></li>
+                    <li><a href="#">Португалия</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                    <li><a href="#">Португальский</a></li>
+                </ul>
             </div>
         </div>
-    </header>
 
-    <div class="header-down">
-        <div class="header-right-languages">
-            <button id="btn2" class="btn-language">Язык</button>
-            <div class="clear-fix"></div>
-            <ul id="lng2" class="language">
-                <li><a href="#">Русский</a></li>
-                <li><a href="#">Английский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-            </ul>
-        </div>
-
-        <div class="header-right-languages">
-            <button id="button2" class="btn-language">Страна</button>
-            <div class="clear-fix"></div>
-            <ul id="language2" class="language">
-                <li><a href="#">Россия</a></li>
-                <li><a href="#">США</a></li>
-                <li><a href="#">Португалия</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-                <li><a href="#">Португальский</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <section class="main">
-        <div class="container">
-            <div class="sidebar">
-                <a class="sidebar-btn">Свежее</a>
-                <a class="sidebar-btn">Свежее</a>
-                <a class="sidebar-btn">Свежее</a>
-            </div>
-            <div class="content">
-                <div class="news-feed">
-                    <p class="content-title">Lorem ipsum dolor.</p>
-                    <div class="content-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed vestibulum ex massa, a fringilla augue consectetur a.
-                        In varius velit at arcu eleifend, quis lobortis ipsum scelerisque.
-                        Nam dignissim sit amet.</p>
+        <section class="main">
+            <div class="container">
+                <div class="sidebar">
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                    <a class="sidebar-btn">Свежее</a>
+                </div>
+                <div class="content">
+                    <div class="news-feed">
+                        <p class="content-title">Lorem ipsum dolor.</p>
+                        <div class="content-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed vestibulum ex massa, a fringilla augue consectetur a.
+                            In varius velit at arcu eleifend, quis lobortis ipsum scelerisque.
+                            Nam dignissim sit amet.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="news-feed">
-                    <p class="content-title">Lorem ipsum dolor.</p>
-                    <div class="content-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed vestibulum ex massa, a fringilla augue consectetur a.
-                        In varius velit at arcu eleifend, quis lobortis ipsum scelerisque.
-                        Nam dignissim sit amet.</p>
+                    <div class="news-feed">
+                        <p class="content-title">Lorem ipsum dolor.</p>
+                        <div class="content-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed vestibulum ex massa, a fringilla augue consectetur a.
+                            In varius velit at arcu eleifend, quis lobortis ipsum scelerisque.
+                            Nam dignissim sit amet.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
-</div>
-
-<div id="auth" class="auth-window">
-    <div class="auth-window-header">
-        <img id="close" class="close-icon" src="public/img/close-svgrepo-com.svg">
+        </section>
     </div>
-    <div class="auth-window-content">
-        <div class="auth-window-logo">N4Y</div>
-        <div class="text-auth">Вход в аккаунт</div>
-        <div class="authorization">
-            <input class="login" placeholder="Логин">
-            <input class="password" placeholder="Пароль">
-            <div class="registration">Нет аккаунта?
-                <a class="auth-window-reg" href="#">Зарегистрироваться</a>
+
+    <div id="auth" class="auth-window">
+        <div class="auth-window-header">
+            <img id="close" class="close-icon" src="img/close-svgrepo-com.svg">
+        </div>
+        <div class="auth-window-content">
+            <div class="auth-window-logo">N4Y</div>
+            <div class="text-auth">Вход в аккаунт</div>
+            <div class="authorization">
+                <input class="name-user" placeholder="Email">
+                <input class="password" placeholder="Пароль">
+                <div class="registration-window">Нет аккаунта?
+                    <a id="btn-reg" class="auth-window-reg" href="#">Зарегистрироваться</a>
+                </div>
             </div>
+            <button class="btn-sigh-in">Войти</button>
         </div>
-        <button class="btn-sigh-in">Войти</button>
     </div>
-</div>
 
+    <div id="reg" class="reg-window">
+        <div class="auth-window-header">
+            <img id="close-reg" class="close-icon" src="img/close-svgrepo-com.svg">
+        </div>
+        <div class="auth-window-content">
+            <div class="auth-window-logo">N4Y</div>
+            <div class="text-auth">Регистрация</div>
+            <div class="authorization">
+                <input class="email" placeholder="Email">
+                <input class="name-user" placeholder="Имя">
+                <input class="password" placeholder="Пароль">
+                <div class="registration-window">Есть аккаунт?
+                    <a id="btn-auth" class="auth-window-reg" href="#">Войти</a>
+                </div>
+            </div>
+            <button class="btn-sigh-up">Зарегистрироваться</button>
+        </div>
+    </div>
 
-<script src="public/js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
