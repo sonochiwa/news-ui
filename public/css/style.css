@@ -384,7 +384,6 @@ li + li {
 
 .over-active {
     filter: blur(10px);
-    animation: auth-enter .5s ease;
 }
 
 .auth-window {
