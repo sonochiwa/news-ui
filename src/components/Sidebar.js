@@ -7,7 +7,7 @@ function Sidebar() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        instance.get('/api/categories/').then(response => {
+        instance.get('/api/categories').then(response => {
             setCategories(response.data)
         })
             .catch(error => {
