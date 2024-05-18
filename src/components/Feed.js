@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
-import SidebarBtn from "./SidebarBtn";
 
 function Feed() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        instance.get('/api/posts/').then(response => {
+        instance.get('/api/posts').then(response => {
             setPosts(response.data)
         })
             .catch(error => {
@@ -29,11 +28,13 @@ function Feed() {
 
 const Root = styled.div`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 `
 
 const Post = styled.div`
     background-color: var(--gray);
-    width: 640px;
     max-height: 550px;
     cursor: pointer;
     border-radius: 10px;
