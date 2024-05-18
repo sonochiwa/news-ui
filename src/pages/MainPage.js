@@ -11,7 +11,7 @@ function mainPage() {
             <Container>
                 <Content>
                     <Sidebar/>
-                    <Feed/>
+                    <Feed />
                 </Content>
             </Container>
         </>

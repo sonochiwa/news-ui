@@ -21,7 +21,6 @@ function Sidebar() {
                 {categories.map(category => (
                     <SidebarBtn key={category.id} title={category.title} tag={category.tag}/>
                 ))}
-
             </SidebarInner>
         </Root>
     )

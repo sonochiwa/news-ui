@@ -1,16 +1,28 @@
 import styled from "styled-components";
+import {useEffect, useState} from "react";
+import {instance} from "../services/axios-instance";
+import SidebarBtn from "./SidebarBtn";
 
 function Feed() {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        instance.get('/api/posts/').then(response => {
+            setPosts(response.data)
+        })
+            .catch(error => {
+                console.error('Ошибка при получении данных:', error);
+            });
+    }, []);
+
     return (
         <Root>
-            <Post>
-                <Title>Lorem ipsum dolor</Title>
-                <Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum ex massa, a fringilla
-                    augue consectetur a. In varius velit at arcu eleifend, quis lobortis ipsum scelerisque. Nam
-                    dignissim sit amet.
-                </Body>
-            </Post>
+            {posts.map(post => (
+                <Post key={post.id}>
+                    <Title>{post.title}</Title>
+                    <Body>{post.body}</Body>
+                </Post>
+            ))}
         </Root>
     )
 }
