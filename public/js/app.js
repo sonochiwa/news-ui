@@ -80,23 +80,3 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTextContent("ru-cnt", "button-country", "Россия");
 });
 
-// const apiUrl = "http://92.124.138.138:7000/api/";
-const apiUrl = "http://localhost:7000/api";
-
-const fetchLanguages = async () => {
-    const response = await fetch(`${apiUrl}/languages`);
-    const languages = await response.json();
-
-    // console.log(languages);
-
-    const languagesList = document.getElementById("lng1");
-    languagesList.innerHTML = "";
-
-    languages.forEach((language) => {
-        const listItem = document.createElement("tr");
-        listItem.innerHTML = `<li><a href="#">${language.Name}</a></li>`;
-        languagesList.appendChild(listItem);
-    });
-};
-
-fetchLanguages();
