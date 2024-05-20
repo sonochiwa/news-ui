@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:7000',
+    baseURL: 'https://news-4-you-backend.ru',
     timeout: 1000,
     headers: {
         'Content-Type': 'application/json',
