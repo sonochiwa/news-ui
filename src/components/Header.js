@@ -7,7 +7,7 @@ function Header() {
         <Root>
             <Container>
                 <HeaderInner>
-                    <Logo href={"/"}>New For You</Logo>
+                    <Logo href={"/"}>News For You</Logo>
                     <Search/>
                 </HeaderInner>
             </Container>
