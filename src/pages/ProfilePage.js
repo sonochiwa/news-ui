@@ -45,7 +45,7 @@ function ProfilePage() {
                 console.log(response.data);
                 // Обновление изображения после успешной загрузки
                 setImgUrl(URL.createObjectURL(file));
-                navigate("/profile");
+                window.location.reload();
             } catch (error) {
                 console.error('Ошибка при загрузке файла!', error);
             }
