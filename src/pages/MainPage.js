@@ -4,14 +4,14 @@ import Sidebar from "../components/Sidebar";
 import Container from "../ui/Container";
 import Feed from "../components/Feed";
 
-function mainPage() {
+function MainPage() {
     return (
         <>
             <Header/>
             <Container>
                 <Content>
                     <Sidebar/>
-                    <Feed />
+                    <Feed/>
                 </Content>
             </Container>
         </>
@@ -26,5 +26,5 @@ const Content = styled.div`
     gap: 24px;
 `
 
-export default mainPage;
+export default MainPage;
 

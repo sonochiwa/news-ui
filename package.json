@@ -7,10 +7,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "serve": "^14.2.3",
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
   },
@@ -18,7 +20,8 @@
     "start": "PORT=9000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "npm run build && serve -s build -p 9000"
   },
   "eslintConfig": {
     "extends": [
