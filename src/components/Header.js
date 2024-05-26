@@ -93,8 +93,8 @@ const ProfileBtn = styled.img`
     height: 52px;
     border-radius: 50%;
     background-color: white;
-    background-size: cover;
     cursor: pointer;
+    object-fit: cover;
 `
 
 const HeaderButton = styled.a`
