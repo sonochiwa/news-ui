@@ -92,7 +92,7 @@ const ProfileBtn = styled.img`
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    //background-image: url("/images/profile.png");
+    background-color: white;
     background-size: cover;
     cursor: pointer;
 `

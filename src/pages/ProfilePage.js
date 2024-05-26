@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Header from "../components/Header";
 import Container from "../ui/Container";
 import styled from "styled-components";
@@ -8,28 +8,57 @@ import {instance} from "../services/axios-instance";
 
 function ProfilePage() {
     const [imgUrl, setImgUrl] = useState('/images/profile.png');
+    const fileInputRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        instance.get("/api/users/me")
-            .then(res => {
+        const fetchUserData = async () => {
+            try {
+                const res = await instance.get("/api/users/me");
                 const userData = JSON.stringify(res.data);
                 Cookies.set('user', userData, {expires: 7});
 
-                const userCookie = Cookies.get("user");
-                const parsedUser = JSON.parse(userCookie);
-
-                if (parsedUser['image_path'] !== null) {
-                    setImgUrl(`${process.env.REACT_APP_DOMAIN}/images/${parsedUser['image_path']}`);
+                const parsedUser = res.data;
+                if (parsedUser.image_path) {
+                    setImgUrl(`${process.env.REACT_APP_DOMAIN}/images/${parsedUser.image_path}`);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error("Ошибка при получении данных пользователя:", error);
-            });
+            }
+        };
+
+        fetchUserData();
     }, []);
 
-    const navigate = useNavigate();
+    const handleFileChange = async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file, file.name);
+
+            try {
+                const response = await instance.post('/api/upload/img', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                console.log(response.data);
+                // Обновление изображения после успешной загрузки
+                setImgUrl(URL.createObjectURL(file));
+                navigate("/profile");
+            } catch (error) {
+                console.error('Ошибка при загрузке файла!', error);
+            }
+        }
+    };
+
+    const handleFileSelect = () => {
+        fileInputRef.current.click();
+    };
+
     const logout = () => {
-        Cookies.remove("news_token");
+        Cookies.remove('news_token', { path: '/' });
+        Cookies.remove('user', { path: '/' });
         navigate("/");
     };
 
@@ -38,13 +67,23 @@ function ProfilePage() {
             <Header/>
             <Container>
                 <ProfileInner>
-                    <ImgWrapper>
-                        <ProfileImg src={imgUrl}/></ImgWrapper>
-                    <LogoutBtn href={"/"} onClick={logout}>Выйти из аккаунта</LogoutBtn>
+                    <NewPhoto onClick={handleFileSelect}>
+                        <ImgWrapper>
+                            <ProfileImg src={imgUrl}/>
+                        </ImgWrapper>
+                        <input
+                            type="file"
+                            id="fileInput"
+                            ref={fileInputRef}
+                            style={{display: 'none'}}
+                            onChange={handleFileChange}
+                        />
+                    </NewPhoto>
+                    <LogoutBtn onClick={logout}>Выйти из аккаунта</LogoutBtn>
                 </ProfileInner>
             </Container>
         </>
-    )
+    );
 }
 
 const ProfileInner = styled.div`
@@ -52,8 +91,7 @@ const ProfileInner = styled.div`
     margin-top: 24px;
     height: auto;
     justify-content: space-between;
-`
-
+`;
 
 const LogoutBtn = styled.a`
     text-decoration: none;
@@ -66,7 +104,7 @@ const LogoutBtn = styled.a`
     padding: 0 25px;
     cursor: pointer;
     font-size: 20px;
-`
+`;
 
 const ImgWrapper = styled.div`
     display: flex;
@@ -75,12 +113,19 @@ const ImgWrapper = styled.div`
     width: 220px;
     height: 220px;
     overflow-y: hidden;
+    background-color: white;
     border-radius: 5px;
-`
+`;
 
 const ProfileImg = styled.img`
     width: 100%;
-`
+`;
+
+const NewPhoto = styled.div`
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    color: white;
+`;
 
 export default ProfilePage;
-
