@@ -1,19 +1,18 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
-import Container from "../ui/Container";
 
-function Feed() {
+function Feed({filter}) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        instance.get('/api/posts').then(response => {
+        instance.get(`/api/posts?filter=${filter}`).then(response => {
             setPosts(response.data)
         })
             .catch(error => {
                 console.error('Ошибка при получении данных:', error);
             });
-    }, []);
+    }, [filter]);
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -27,7 +26,9 @@ function Feed() {
                     <Title>{post.title}</Title>
                     <InfoWrapper>
                         <CreatedAt>{formatDate(post.created_at)}</CreatedAt>
-                        <Category>#{post.category}</Category>
+                        <div>
+                            <Category>#{post.category}</Category> <Category>#{post.country}</Category>
+                        </div>
                     </InfoWrapper>
                     <Body>{post.body}</Body>
                 </Post>
@@ -54,7 +55,6 @@ const InfoWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-
 `
 
 const CreatedAt = styled.p`

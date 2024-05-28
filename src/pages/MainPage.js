@@ -3,16 +3,22 @@ import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import Container from "../ui/Container";
 import Feed from "../components/Feed";
+import {useState} from "react";
 
 function MainPage() {
+    const [filter, setFilter] = useState("")
+    const handleFilter = (value) => {
+        setFilter(value)
+    }
+
     return (
         <>
-            <Header/>
+            <Header onChange={handleFilter}/>
             <ContainerWrapper>
                 <Container>
                     <Content>
                         <Sidebar/>
-                        <Feed/>
+                        <Feed filter={filter}  />
                     </Content>
                 </Container>
             </ContainerWrapper>

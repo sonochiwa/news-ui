@@ -1,13 +1,25 @@
 import styled from "styled-components";
 import Container from "../ui/Container";
-import Search from "../ui/Search";
 import {useEffect, useState} from "react";
 import Cookies from 'js-cookie';
 import {instance} from "../services/axios-instance";
 import {useNavigate} from "react-router-dom";
 
-function Header() {
+function Header({onChange}) {
     const [auth, setAuth] = useState(null);
+    const [filter, setFilter] = useState("")
+
+    const handleChange = (event) => {
+        setFilter(event.target.value)
+
+        if (event.target.value.length === 0) {
+            onChange(event.target.value)
+        }
+    }
+
+    const handleSubmit = (event) => {
+        onChange(filter)
+    }
 
     useEffect(() => {
         const token = Cookies.get("news_token")
@@ -52,8 +64,17 @@ function Header() {
                     <Container>
                         <HeaderInner>
                             <Logo href={"/"}>News For You</Logo>
-                            <Search/>
-                            {auth ? <ProfileBtn src={imgUrl} href={"/profile"} onClick={goToProfile} /> :
+                            <Search>
+                                <SearchImg className="svg" src="/images/icon-search.svg" draggable="false"/>
+                                <SearchInput placeholder="Поиск" size="32" onChange={handleChange}
+                                             onKeyDown={(event) => {
+                                                 if (event.key === 'Enter' || event.keyCode == 32) {
+                                                     handleSubmit(event)
+                                                 }
+                                             }}/>
+                            </Search>
+                            <SearchButton type={"submit"} onClick={handleSubmit}>Найти</SearchButton>
+                            {auth ? <ProfileBtn src={imgUrl} href={"/profile"} onClick={goToProfile}/> :
                                 <HeaderButton href={"/sign-in"}>Войти</HeaderButton>}
                         </HeaderInner>
                     </Container>
@@ -63,9 +84,59 @@ function Header() {
     )
 }
 
+const SearchButton = styled.button`
+    outline: none;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    background-color: var(--main-dark-gray);
+    color: var(--main-text-light-gray);
+    height: 52px;
+    text-align: center;
+    line-height: 52px;
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    font-size: 20px;
+`
+
+const Search = styled.div`
+    width: 100%;
+    align-items: center;
+    background-color: var(--main-dark-gray);
+    border-radius: 10px;
+    padding-left: 11px;
+    height: 52px;
+    display: flex;
+`
+
+const SearchInput = styled.input`
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-size: 20px;
+`
+
+const SearchImg = styled.img`
+    display: block;
+    color: var(--header-search-gray);
+    width: 25px;
+    height: 25px;
+    line-height: 52px;
+    fill: currentColor;
+    transition: all .3s ease;
+    user-select: none;
+`
+
 const Fix = styled.div`
     height: 80px;
-    width:  100%;
+    width: 100%;
 `
 
 const Root = styled.div`
@@ -83,7 +154,7 @@ const HeaderInner = styled.div`
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: 220px auto max-content;
+    grid-template-columns: 220px auto max-content max-content;
     gap: 24px;
 `
 
