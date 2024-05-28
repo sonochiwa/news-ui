@@ -46,6 +46,7 @@ function Header() {
 
     return (
         <>
+            <Fix/>
             {auth != null &&
                 <Root>
                     <Container>
@@ -62,12 +63,20 @@ function Header() {
     )
 }
 
+const Fix = styled.div`
+    height: 80px;
+    width:  100%;
+`
+
 const Root = styled.div`
+    position: fixed;
+    top: 0;
     height: 80px;
     width: 100%;
     background-color: var(--gray);
     display: flex;
     align-items: center;
+    outline: 2px solid #6c6c6c;
 `
 
 const HeaderInner = styled.div`

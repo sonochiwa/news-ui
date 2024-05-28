@@ -22,7 +22,7 @@ const Content = styled.div`
     margin-top: 25px;
     width: 100%;
     display: grid;
-    grid-template-columns: 220px auto;
+    grid-template-columns: auto;
     gap: 24px;
 `
 

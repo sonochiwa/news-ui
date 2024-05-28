@@ -19,7 +19,9 @@ function Sidebar() {
         <Root>
             <SidebarInner>
                 {categories.map(category => (
-                    <SidebarBtn key={category.id} title={category.title} tag={category.tag}/>
+                    <SidebarBtn key={category.id}
+                                title={category.title[0].toUpperCase() + category.title.substring(1, category.title.length)}
+                                tag={category.title}/>
                 ))}
             </SidebarInner>
         </Root>
@@ -27,9 +29,10 @@ function Sidebar() {
 }
 
 const Root = styled.div`
+    position: fixed;
+    width: 220px;
     background-color: transparent;
     height: 460px;
-    width: 220px;
     overflow-y: scroll;
     scrollbar-color: var(--main-text-gray);
 `

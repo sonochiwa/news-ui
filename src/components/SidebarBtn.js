@@ -7,7 +7,7 @@ function SidebarBtn({title, tag}) {
     // todo: заменить навигацию на фильтр для данных
 
     function handleClick() {
-        navigate(`/${tag}`);
+        // navigate(`/${tag}`);
     }
 
     return (
