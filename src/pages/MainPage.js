@@ -8,22 +8,25 @@ function MainPage() {
     return (
         <>
             <Header/>
-            <Container>
-                <Content>
-                    <Sidebar/>
-                    <Feed/>
-                </Content>
-            </Container>
+            <ContainerWrapper>
+                <Container>
+                    <Content>
+                        <Sidebar/>
+                        <Feed/>
+                    </Content>
+                </Container>
+            </ContainerWrapper>
         </>
     )
 }
 
+const ContainerWrapper = styled.div`
+    display: flex;
+`
+
 const Content = styled.div`
     margin-top: 25px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    gap: 24px;
+    display: flex;
 `
 
 export default MainPage;

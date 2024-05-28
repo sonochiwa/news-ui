@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
+import Container from "../ui/Container";
 
 function Feed() {
     const [posts, setPosts] = useState([]);
@@ -53,7 +54,7 @@ const InfoWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
+
 `
 
 const CreatedAt = styled.p`
@@ -73,7 +74,7 @@ const Title = styled.p`
     font-weight: 700;
     color: var(--main-text-light-gray);
     width: 100%;
-    
+    text-align: justify;
 `
 
 const Body = styled.div`
