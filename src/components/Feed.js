@@ -36,7 +36,6 @@ function Feed() {
 }
 
 const Root = styled.div`
-    //width: 100%;
     margin-left: 244px;
     display: flex;
     flex-direction: column;
@@ -44,7 +43,6 @@ const Root = styled.div`
 `
 
 const Post = styled.div`
-    //width: 100%;
     background-color: var(--gray);
     cursor: pointer;
     border-radius: 10px;
@@ -85,7 +83,7 @@ const Body = styled.div`
     margin-top: 15px;
     text-align: justify;
     width: 100%;
-    
+    white-space: break-spaces;
 `
 
 export default Feed;
