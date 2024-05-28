@@ -64,16 +64,18 @@ function Header({onChange}) {
                     <Container>
                         <HeaderInner>
                             <Logo href={"/"}>News For You</Logo>
-                            <Search>
-                                <SearchImg className="svg" src="/images/icon-search.svg" draggable="false"/>
-                                <SearchInput placeholder="Поиск" size="32" onChange={handleChange}
-                                             onKeyDown={(event) => {
-                                                 if (event.key === 'Enter' || event.keyCode == 32) {
-                                                     handleSubmit(event)
-                                                 }
-                                             }}/>
-                            </Search>
-                            <SearchButton type={"submit"} onClick={handleSubmit}>Найти</SearchButton>
+                            <>
+                                <Search>
+                                    <SearchImg className="svg" src="/images/icon-search.svg" draggable="false"/>
+                                    <SearchInput placeholder="Поиск" size="32" onChange={handleChange}
+                                                 onKeyDown={(event) => {
+                                                     if (event.key === 'Enter' || event.keyCode == 32) {
+                                                         handleSubmit(event)
+                                                     }
+                                                 }}/>
+                                </Search>
+                                <SearchButton type={"submit"} onClick={handleSubmit}>Найти</SearchButton>
+                            </>
                             {auth ? <ProfileBtn src={imgUrl} href={"/profile"} onClick={goToProfile}/> :
                                 <HeaderButton href={"/sign-in"}>Войти</HeaderButton>}
                         </HeaderInner>
@@ -89,14 +91,15 @@ const SearchButton = styled.button`
     border: none;
     text-decoration: none;
     display: flex;
-    background-color: var(--main-dark-gray);
+    background-color: #1a1a1a;
     color: var(--main-text-light-gray);
     height: 52px;
     text-align: center;
     line-height: 52px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
     padding-left: 25px;
     padding-right: 25px;
+    margin-left: -13px;
     cursor: pointer;
     font-size: 20px;
 `
@@ -105,7 +108,7 @@ const Search = styled.div`
     width: 100%;
     align-items: center;
     background-color: var(--main-dark-gray);
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     padding-left: 11px;
     height: 52px;
     display: flex;
