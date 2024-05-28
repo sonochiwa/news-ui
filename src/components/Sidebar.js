@@ -18,7 +18,7 @@ function Sidebar() {
     function wordToUpper(word) {
         let result = ""
 
-        if (word.l > 0) {
+        if (word.length > 0) {
             result = word[0].toUpperCase() + word.substring(1, word.length)
         }
 
