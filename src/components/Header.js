@@ -112,7 +112,6 @@ const HeaderButton = styled.a`
     background-color: var(--main-dark-gray);
     color: var(--main-text-light-gray);
     height: 52px;
-    width: 107px;
     text-align: center;
     line-height: 52px;
     border-radius: 10px;
