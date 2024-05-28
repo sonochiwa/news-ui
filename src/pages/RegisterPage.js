@@ -9,8 +9,14 @@ function RegisterPage() {
     const [hasError, setHasError] = useState(false);
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
 
     const signUp = () => {
+        if (password !== passwordConfirm) {
+            setHasError("Пароли отличаются");
+            return
+        }
+
         console.log(login, password)
         instance.post("/auth/sign-up", {login: login, password: password})
             .then(res => {
@@ -49,6 +55,7 @@ function RegisterPage() {
                 <Authorization>
                     <Input placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
                     <Input placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)} value={password}/>
+                    <Input placeholder={"Подтверждение пароля"} type={"password"} onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
                     <GoToRegisterText>
                         Есть аккаунт? <GoToRegisterLink href={"/sign-in"}>Войти</GoToRegisterLink>
                     </GoToRegisterText>
