@@ -15,12 +15,22 @@ function Sidebar() {
             });
     }, []);
 
+    function wordToUpper(word) {
+        let result = ""
+
+        if (word !== null) {
+            result = word[0].toUpperCase() + word.substring(1, word.length)
+        }
+
+        return result
+    }
+
     return (
         <Root>
             <SidebarInner>
                 {categories.map(category => (
                     <SidebarBtn key={category.id}
-                                title={category.title[0].toUpperCase() + category.title.substring(1, category.title.length)}
+                                title={wordToUpper(category.title)}
                                 tag={category.title}/>
                 ))}
             </SidebarInner>
