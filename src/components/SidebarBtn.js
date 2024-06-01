@@ -1,17 +1,19 @@
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function SidebarBtn({title, tag}) {
     const navigate = useNavigate();
 
-    // todo: заменить навигацию на фильтр для данных
-
     function handleClick() {
-        // navigate(`/${tag}`);
+        navigate(`/${tag}`, {state: {filter: tag}});
     }
 
+    const location = useLocation();
+    let currentPath = location.pathname;
+    currentPath = currentPath.substring(1, currentPath.length)
+
     return (
-        <Root type="button" onClick={handleClick}>
+        <Root type="button" onClick={handleClick} style={currentPath === tag ? {outline: "2px solid #6c6c6c"} : null}>
             {title}
         </Root>
     )
@@ -30,6 +32,7 @@ const Root = styled.button`
     text-align: start;
     user-select: none;
     cursor: pointer;
+    margin: 2px;
 `
 
 export default SidebarBtn;

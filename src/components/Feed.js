@@ -1,18 +1,36 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
+import {useLocation, useParams} from "react-router-dom";
 
 function Feed({filter}) {
     const [posts, setPosts] = useState([]);
+    const { category } = useParams();
+
+    const location = useLocation();
+
+    let currentPath = location.pathname;
+    currentPath = currentPath.substring(1, currentPath.length)
+
+    let postsLink = '/api/posts?'
+
+    if (filter != null) {
+        postsLink += `filter=${filter}&`
+    }
+
+    if (currentPath != null) {
+        postsLink += `category=${currentPath}&`
+    }
 
     useEffect(() => {
-        instance.get(`/api/posts?filter=${filter}`).then(response => {
+        instance.get(postsLink).then(response => {
             setPosts(response.data)
         })
             .catch(error => {
                 console.error('Ошибка при получении данных:', error);
             });
-    }, [filter]);
+
+    }, [filter, postsLink, category]);
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -21,7 +39,7 @@ function Feed({filter}) {
 
     return (
         <Root>
-            {posts.map(post => (
+            {posts.length > 0 ? posts.map(post => (
                 <Post key={post.id}>
                     <Title>{post.title}</Title>
                     <InfoWrapper>
@@ -32,7 +50,7 @@ function Feed({filter}) {
                     </InfoWrapper>
                     <Body>{post.body}</Body>
                 </Post>
-            ))}
+            )) : <PostsNotFound>Записей не найдено</PostsNotFound>}
         </Root>
     )
 }
@@ -49,6 +67,11 @@ const Post = styled.div`
     cursor: pointer;
     border-radius: 10px;
     padding: 15px;
+`
+
+const PostsNotFound = styled.p`
+    color: white;
+    font-size: 24px;
 `
 
 const InfoWrapper = styled.div`

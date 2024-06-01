@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import {instance} from "../services/axios-instance";
 import {useNavigate} from "react-router-dom";
 
-function Header({onChange}) {
+function Header({onChange, search}) {
     const [auth, setAuth] = useState(null);
     const [filter, setFilter] = useState("")
 
