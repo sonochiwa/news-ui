@@ -43,7 +43,6 @@ function ProfilePage() {
                     }
                 });
                 console.log(response.data);
-                // Обновление изображения после успешной загрузки
                 setImgUrl(URL.createObjectURL(file));
                 window.location.reload();
             } catch (error) {
@@ -57,29 +56,57 @@ function ProfilePage() {
     };
 
     const logout = () => {
-        Cookies.remove('news_token', { path: '/' });
-        Cookies.remove('user', { path: '/' });
-        Cookies.remove('country', { path: '/' });
+        Cookies.remove('news_token', {path: '/'});
+        Cookies.remove('user', {path: '/'});
+        Cookies.remove('country', {path: '/'});
         navigate("/");
     };
+
+    let user = Cookies.get('user')
+    let parsedUser = JSON.parse(user)
+
+    const curDate = new Date(parsedUser.created_at);
+
+    const changeLang = async (value) => {
+        instance.patch(`/api/users/me?language=${value}`)
+            .then(async res => {
+                const ress = await instance.get("/api/users/me");
+                const userData = JSON.stringify(ress.data);
+                Cookies.set('user', userData, {expires: 7});
+            })
+    }
 
     return (
         <>
             <Header/>
             <Container>
                 <ProfileInner>
-                    <NewPhoto onClick={handleFileSelect}>
-                        <ImgWrapper>
-                            <ProfileImg src={imgUrl}/>
-                        </ImgWrapper>
-                        <input
-                            type="file"
-                            id="fileInput"
-                            ref={fileInputRef}
-                            style={{display: 'none'}}
-                            onChange={handleFileChange}
-                        />
-                    </NewPhoto>
+                    <ProfileInnerDetails>
+                        <NewPhoto onClick={handleFileSelect}>
+                            <ImgWrapper>
+                                <ProfileImg src={imgUrl}/>
+                            </ImgWrapper>
+                            <input
+                                type="file"
+                                id="fileInput"
+                                ref={fileInputRef}
+                                style={{display: 'none'}}
+                                onChange={handleFileChange}
+                            />
+                        </NewPhoto>
+                        <JustInfo>
+                            <p><span style={{color: "gray"}}>Дата регистрации:</span> {curDate.toLocaleString()}</p>
+                            <p><span style={{color: "gray"}}>Логин:</span> {parsedUser.login}</p>
+                            <p><span style={{color: "gray"}}>Язык:</span> <select
+                                onChange={(event) => changeLang(event.target.value)} style={{fontSize: '16px'}}>
+                                <option value="ru">Русский</option>
+                                <option value="en">Английский</option>
+                                <option value="ch">Китайский</option>
+                                <option value="de">Немецкий</option>
+                                <option value="sp">Испанский</option>
+                            </select></p>
+                        </JustInfo>
+                    </ProfileInnerDetails>
                     <LogoutBtn onClick={logout}>Выйти из аккаунта</LogoutBtn>
                 </ProfileInner>
             </Container>
@@ -87,12 +114,26 @@ function ProfilePage() {
     );
 }
 
+const ProfileInnerDetails = styled.div`
+    display: flex;
+    gap: 24px;
+    flex-direction: row;
+    color: white;
+    font-size: 20px;
+`
+
 const ProfileInner = styled.div`
     display: flex;
     margin-top: 24px;
     height: auto;
     justify-content: space-between;
 `;
+
+const JustInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`
 
 const LogoutBtn = styled.a`
     text-decoration: none;
