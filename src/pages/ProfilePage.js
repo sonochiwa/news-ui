@@ -99,11 +99,12 @@ function ProfilePage() {
                             <p><span style={{color: "gray"}}>Логин:</span> {parsedUser.login}</p>
                             <p><span style={{color: "gray"}}>Язык:</span> <select
                                 onChange={(event) => changeLang(event.target.value)} style={{fontSize: '16px'}}>
+                                <option value="ru">Выберете язык</option>
                                 <option value="ru">Русский</option>
                                 <option value="en">Английский</option>
-                                <option value="ch">Китайский</option>
                                 <option value="de">Немецкий</option>
-                                <option value="sp">Испанский</option>
+                                <option value="pt">Португальский</option>
+                                <option value="zh">Китайский</option>
                             </select></p>
                         </JustInfo>
                     </ProfileInnerDetails>

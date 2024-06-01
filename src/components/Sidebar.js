@@ -28,9 +28,9 @@ function Sidebar() {
     return (
         <Root>
             <SidebarInner>
-                {categories.map(category => (
+                {categories.map((category, key) => (
                     <SidebarBtn
-                        key={category.id}
+                        key={key}
                         title={wordToUpper(category.title)}
                         tag={category.title}/>
                 ))}
