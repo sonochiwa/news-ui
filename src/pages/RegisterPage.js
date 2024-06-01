@@ -22,6 +22,7 @@ function RegisterPage() {
             .then(res => {
                 if (res.status === 200) {
                     Cookies.set('news_token', res.data["token"], {expires: 7, path: ''});
+                    Cookies.set('country', 'all', {expires: 7, path: ''});
                     navigate('/');
                     return instance.get("/api/users/me"); // Возвращаем новый Promise
                 }

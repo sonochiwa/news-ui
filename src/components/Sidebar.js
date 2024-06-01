@@ -2,7 +2,6 @@ import styled from "styled-components";
 import SidebarBtn from "./SidebarBtn";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
-import {useLocation} from "react-router-dom";
 
 function Sidebar() {
     const [categories, setCategories] = useState([]);
@@ -31,7 +30,6 @@ function Sidebar() {
             <SidebarInner>
                 {categories.map(category => (
                     <SidebarBtn
-                        // style={currentPath === category ? "outline: 1px solid red;" : null}
                         key={category.id}
                         title={wordToUpper(category.title)}
                         tag={category.title}/>
@@ -45,7 +43,7 @@ const Root = styled.div`
     position: fixed;
     width: 220px;
     background-color: transparent;
-    height: 460px;
+    height: 450px;
     overflow-y: scroll;
     scrollbar-color: var(--main-text-gray);
 `

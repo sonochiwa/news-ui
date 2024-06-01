@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import Cookies from "js-cookie";
 
-function Feed({filter}) {
+function Feed({filter, countries}) {
     const [posts, setPosts] = useState([]);
-    const { category } = useParams();
 
     const location = useLocation();
 
@@ -22,6 +22,12 @@ function Feed({filter}) {
         postsLink += `category=${currentPath}&`
     }
 
+    let countryCookies = Cookies.get('country');
+
+    if (countryCookies !== 'all') {
+        postsLink += `country=${countryCookies}&`
+    }
+
     useEffect(() => {
         instance.get(postsLink).then(response => {
             setPosts(response.data)
@@ -29,8 +35,7 @@ function Feed({filter}) {
             .catch(error => {
                 console.error('Ошибка при получении данных:', error);
             });
-
-    }, [filter, postsLink, category]);
+    }, [filter, postsLink]);
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -45,7 +50,7 @@ function Feed({filter}) {
                     <InfoWrapper>
                         <CreatedAt>{formatDate(post.created_at)}</CreatedAt>
                         <div>
-                            <Category>#{post.category}</Category> <Category>#{post.country}</Category>
+                            <Category>#{post.category}</Category> <Category>#{post.country_tag}</Category>
                         </div>
                     </InfoWrapper>
                     <Body>{post.body}</Body>

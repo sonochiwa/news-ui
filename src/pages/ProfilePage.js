@@ -59,6 +59,7 @@ function ProfilePage() {
     const logout = () => {
         Cookies.remove('news_token', { path: '/' });
         Cookies.remove('user', { path: '/' });
+        Cookies.remove('country', { path: '/' });
         navigate("/");
     };
 
