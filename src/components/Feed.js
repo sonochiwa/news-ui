@@ -57,9 +57,11 @@ function Feed({filter}) {
 
 const Root = styled.div`
     margin-left: 244px;
+    margin-right: 26px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
 `
 
 const Post = styled.div`
@@ -67,6 +69,7 @@ const Post = styled.div`
     cursor: pointer;
     border-radius: 10px;
     padding: 15px;
+    width: 100%;
 `
 
 const PostsNotFound = styled.p`
