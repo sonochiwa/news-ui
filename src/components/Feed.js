@@ -23,14 +23,6 @@ function Feed({filter, countries}) {
         postsLink += `country=${countryCookies}&`;
     }
 
-    // let lang = 'ru';
-    // const user = Cookies.get('user');
-    // if (user !== null) {
-    //     if (JSON.parse(user).language) {
-    //         lang = JSON.parse(user).language;
-    //     }
-    // }
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -73,6 +65,7 @@ function Feed({filter, countries}) {
 const Root = styled.div`
     margin-left: 244px;
     margin-right: 26px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     gap: 12px;
