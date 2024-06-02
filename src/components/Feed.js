@@ -23,13 +23,13 @@ function Feed({filter, countries}) {
         postsLink += `country=${countryCookies}&`;
     }
 
-    let lang = 'ru';
-    const user = Cookies.get('user');
-    if (user !== null) {
-        if (JSON.parse(user).language) {
-            lang = JSON.parse(user).language;
-        }
-    }
+    // let lang = 'ru';
+    // const user = Cookies.get('user');
+    // if (user !== null) {
+    //     if (JSON.parse(user).language) {
+    //         lang = JSON.parse(user).language;
+    //     }
+    // }
 
     useEffect(() => {
         const fetchPosts = async () => {
