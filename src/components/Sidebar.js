@@ -32,7 +32,7 @@ function Sidebar() {
                     <SidebarBtn
                         key={key}
                         title={wordToUpper(category.title)}
-                        tag={category.title}/>
+                    />
                 ))}
             </SidebarInner>
         </Root>

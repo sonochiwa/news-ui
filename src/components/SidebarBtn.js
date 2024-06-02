@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import {useLocation, useNavigate} from "react-router-dom";
 
-function SidebarBtn({title, tag}) {
+function SidebarBtn({title}) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate(`/${tag}`, {state: {filter: tag}});
+        navigate(`/${title}`, {state: {filter: title}});
     }
 
     const location = useLocation();
     let currentPath = location.pathname;
-    currentPath = currentPath.substring(1, currentPath.length)
+    currentPath = decodeURIComponent(currentPath.substring(1, currentPath.length))
 
     return (
-        <Root type="button" onClick={handleClick} style={currentPath === tag ? {outline: "2px solid #6c6c6c"} : null}>
+        <Root type="button" onClick={handleClick} style={currentPath === title ? {outline: "2px solid #6c6c6c"} : null}>
             {title}
         </Root>
     )

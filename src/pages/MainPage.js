@@ -45,9 +45,9 @@ function MainPage() {
                     >All</Country>
                     {countries.map(country => (
                         <Country
-                            key={country.country_tag}
-                            onClick={() => setCountryCookie(country.country_tag)}
-                            style={countryCookie === country.country_tag ? { outline: "2px solid #eaeaea" } : null}
+                            key={country.country_title}
+                            onClick={() => setCountryCookie(country.country_title)}
+                            style={countryCookie === country.country_title ? { outline: "2px solid #eaeaea" } : null}
                         >{country.country_title}</Country>
                     ))}
                 </Countries>
