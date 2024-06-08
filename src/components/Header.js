@@ -64,6 +64,7 @@ function Header({onChange, search}) {
                     <Container id={"header_container"}>
                         <HeaderInner id={"header_inner"}>
                             <Logo id={"logo"} href={"/"}>News For You</Logo>
+                            <Logo id={"logo2"} href={"/"}>HOME</Logo>
                             <>
                                 <Search>
                                     <SearchImg className="svg" src="/images/icon-search.svg" draggable="false"/>

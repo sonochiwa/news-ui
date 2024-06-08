@@ -53,7 +53,7 @@ function MainPage() {
                     ))}
                 </Countries>
             </Container>
-            <ContainerWrapper>
+            <ContainerWrapper id={"countries_wrapper"}>
                 <Container>
                     <Content id={"content_id"}>
                         <Sidebar />
