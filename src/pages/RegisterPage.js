@@ -46,17 +46,17 @@ function RegisterPage() {
     };
 
     return (
-        <Root>
+        <Root id={"login"}>
             <Header href={"/"}>
                 <Img src="/images/close-svgrepo-com.svg" alt="logo"/>
             </Header>
             <Content onKeyDown={handleKeyPress} onChange={() => setHasError(false)}>
                 <Logo>N4Y</Logo>
                 <TextAuth>Регистрация</TextAuth>
-                <Authorization>
-                    <Input placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
-                    <Input placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)} value={password}/>
-                    <Input placeholder={"Подтверждение пароля"} type={"password"} onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
+                <Authorization id={"auth"}>
+                    <Input id={"profile_input"} placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
+                    <Input id={"profile_input"}placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)} value={password}/>
+                    <Input id={"profile_input"}placeholder={"Подтверждение пароля"} type={"password"} onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
                     <GoToRegisterText>
                         Есть аккаунт? <GoToRegisterLink href={"/sign-in"}>Войти</GoToRegisterLink>
                     </GoToRegisterText>

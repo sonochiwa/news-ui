@@ -40,16 +40,16 @@ function LoginPage() {
     };
 
     return (
-        <Root>
+        <Root id={"login"}>
             <Header href={"/"}>
                 <Img src="/images/close-svgrepo-com.svg" alt="logo"/>
             </Header>
             <Content onKeyDown={handleKeyPress} onChange={() => setHasError(false)}>
                 <Logo>N4Y</Logo>
                 <TextAuth>Вход в аккаунт</TextAuth>
-                <Authorization>
-                    <Input placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
-                    <Input placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)}
+                <Authorization id={"auth"}>
+                    <Input id={"profile_input"} placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
+                    <Input id={"profile_input"} placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)}
                            value={password}/>
                     <GoToRegisterText>
                         Нет аккаунта? <GoToRegisterLink href={"/sign-up"}>Зарегистрироваться</GoToRegisterLink>

@@ -18,7 +18,7 @@ function App() {
                     <Route path="/sign-up" element={<RegisterPage/>}/>
                 </Routes>
             </BrowserRouter>
-            <Fix/>
+            <Fix id={"fix"}/>
         </div>
     );
 }

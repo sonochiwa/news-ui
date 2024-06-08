@@ -60,10 +60,10 @@ function Header({onChange, search}) {
         <>
             <Fix/>
             {auth != null &&
-                <Root>
-                    <Container>
-                        <HeaderInner>
-                            <Logo href={"/"}>News For You</Logo>
+                <Root >
+                    <Container id={"header_container"}>
+                        <HeaderInner id={"header_inner"}>
+                            <Logo id={"logo"} href={"/"}>News For You</Logo>
                             <>
                                 <Search>
                                     <SearchImg className="svg" src="/images/icon-search.svg" draggable="false"/>
@@ -74,9 +74,9 @@ function Header({onChange, search}) {
                                                      }
                                                  }}/>
                                 </Search>
-                                <SearchButton type={"submit"} onClick={handleSubmit}>Найти</SearchButton>
+                                <SearchButton id={"search_btn"} type={"submit"} onClick={handleSubmit}>Найти</SearchButton>
                             </>
-                            {auth ? <ProfileBtn src={imgUrl} href={"/profile"} onClick={goToProfile}/> :
+                            {auth ? <ProfileBtn id={"profile_btn"} src={imgUrl} href={"/profile"} onClick={goToProfile}/> :
                                 <HeaderButton href={"/sign-in"}>Войти</HeaderButton>}
                         </HeaderInner>
                     </Container>

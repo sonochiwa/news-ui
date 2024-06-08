@@ -79,11 +79,11 @@ function ProfilePage() {
     return (
         <>
             <Header/>
-            <Container>
-                <ProfileInner>
+            <Container id={"profile"}>
+                <ProfileInner id={"profile_inner"}>
                     <ProfileInnerDetails>
                         <NewPhoto onClick={handleFileSelect}>
-                            <ImgWrapper>
+                            <ImgWrapper id={"profile_img"}>
                                 <ProfileImg src={imgUrl}/>
                             </ImgWrapper>
                             <input

@@ -37,9 +37,10 @@ function MainPage() {
     return (
         <>
             <Header onChange={handleFilter} />
-            <Container>
-                <Countries>
+            <Container id={"countries_container"}>
+                <Countries id={"countries"}>
                     <Country
+                        id={"country"}
                         onClick={() => setCountryCookie('all')}
                         style={countryCookie === 'all' ? { outline: "2px solid #eaeaea" } : null}
                     >All</Country>
@@ -54,7 +55,7 @@ function MainPage() {
             </Container>
             <ContainerWrapper>
                 <Container>
-                    <Content>
+                    <Content id={"content_id"}>
                         <Sidebar />
                         <Feed filter={filter} countries={123} />
                     </Content>

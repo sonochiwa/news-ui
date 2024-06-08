@@ -5,6 +5,11 @@ function SidebarBtn({title}) {
     const navigate = useNavigate();
 
     function handleClick() {
+        if (title==="All") {
+            navigate(`/All`, {state: {filter: ''}});
+            return
+        }
+
         navigate(`/${title}`, {state: {filter: title}});
     }
 
@@ -13,7 +18,8 @@ function SidebarBtn({title}) {
     currentPath = decodeURIComponent(currentPath.substring(1, currentPath.length))
 
     return (
-        <Root type="button" onClick={handleClick} style={currentPath === title ? {outline: "2px solid #6c6c6c"} : null}>
+        <Root id={"sidebar_btn"} type="button" onClick={handleClick} style={
+            currentPath === title  ? {outline: "2px solid #6c6c6c"}  : null}>
             {title}
         </Root>
     )

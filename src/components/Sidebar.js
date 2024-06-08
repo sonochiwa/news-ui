@@ -26,8 +26,12 @@ function Sidebar() {
     }
 
     return (
-        <Root>
-            <SidebarInner>
+        <Root id={"sidebar"}>
+            <SidebarInner id={"sidebar_inner"}>
+                <SidebarBtn
+                    key={'All'}
+                    title={"All"}
+                />
                 {categories.map((category, key) => (
                     <SidebarBtn
                         key={key}

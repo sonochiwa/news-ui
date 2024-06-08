@@ -15,7 +15,11 @@ function Feed({filter, countries}) {
     }
 
     if (currentPath != null) {
-        postsLink += `category=${currentPath}&`;
+        if (currentPath === "All") {
+            postsLink += `category=&`;
+        } else {
+            postsLink += `category=${currentPath}&`;
+        }
     }
 
     let countryCookies = Cookies.get('country');
@@ -45,9 +49,9 @@ function Feed({filter, countries}) {
     }
 
     return (
-        <Root>
+        <Root id={"feed"}>
             {posts.length > 0 ? posts.map(post => (
-                <Post key={post.id}>
+                <Post id={"post"} key={post.id}>
                     <Title>{post.title}</Title>
                     <InfoWrapper>
                         <CreatedAt>{formatDate(post.created_at)}</CreatedAt>
