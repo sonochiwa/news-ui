@@ -85,6 +85,7 @@ const Post = styled.div`
 `;
 
 const PostsNotFound = styled.p`
+    padding: 15px;
     color: white;
     font-size: 24px;
 `;
