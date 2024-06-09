@@ -20,7 +20,7 @@ function SidebarBtn({title}) {
     return (
         <Root id={"sidebar_btn"} type="button" onClick={handleClick} style={
             currentPath === title  ? {outline: "2px solid #6c6c6c"}  : null}>
-            {title}
+            <span id={"sidebar_btn_text"} title={title}>{title}</span>
         </Root>
     )
 }

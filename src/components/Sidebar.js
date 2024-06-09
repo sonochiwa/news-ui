@@ -49,6 +49,7 @@ const Root = styled.div`
     background-color: transparent;
     height: 450px;
     margin-top: 5px;
+    padding-right: 5px;
     overflow-y: scroll;
     scrollbar-color: var(--main-text-gray);
 `
