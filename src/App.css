@@ -59,6 +59,10 @@ body {
     display: none;
 }
 
+#sidebar_btn {
+    white-space: nowrap;
+}
+
 @media (max-width: 700px) {
     #header_inner {
         grid-template-columns: max-content auto max-content max-content;
