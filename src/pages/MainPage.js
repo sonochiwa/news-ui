@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Container from "../ui/Container";
 import styled from "styled-components";
-import { instance } from "../services/axios-instance";
+import {instance} from "../services/axios-instance";
 import Cookies from "js-cookie";
 
 function MainPage() {
@@ -35,20 +35,20 @@ function MainPage() {
     }, [setCountries, setCountryCookie]);
 
     return (
-        <>
-            <Header onChange={handleFilter} />
+        <Root>
+            <Header onChange={handleFilter}/>
             <Container id={"countries_container"}>
                 <Countries id={"countries"}>
                     <Country
                         id={"country"}
                         onClick={() => setCountryCookie('all')}
-                        style={countryCookie === 'all' ? { outline: "2px solid #eaeaea" } : null}
+                        style={countryCookie === 'all' ? {outline: "2px solid #eaeaea"} : null}
                     >All</Country>
                     {countries.map(country => (
                         <Country
                             key={country.country_title}
                             onClick={() => setCountryCookie(country.country_title)}
-                            style={countryCookie === country.country_title ? { outline: "2px solid #eaeaea" } : null}
+                            style={countryCookie === country.country_title ? {outline: "2px solid #eaeaea"} : null}
                         >{country.country_title}</Country>
                     ))}
                 </Countries>
@@ -56,14 +56,18 @@ function MainPage() {
             <ContainerWrapper id={"countries_wrapper"}>
                 <Container>
                     <Content id={"content_id"}>
-                        <Sidebar />
-                        <Feed filter={filter} countries={123} />
+                        <Sidebar/>
+                        <Feed filter={filter} countries={123}/>
                     </Content>
                 </Container>
             </ContainerWrapper>
-        </>
+        </Root>
     );
 }
+
+const Root = styled.div`
+    //margin-bottom: 10px;
+`
 
 const Countries = styled.div`
     margin-left: 5px;

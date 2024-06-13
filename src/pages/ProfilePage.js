@@ -106,6 +106,8 @@ function ProfilePage() {
                                 <option value="pt">Португальский</option>
                                 <option value="zh">Китайский</option>
                             </select></p>
+                            {parsedUser.is_admin &&
+                                <NewPostBtn onClick={() => navigate('/create-new')}>Создать новую запись</NewPostBtn>}
                         </JustInfo>
                     </ProfileInnerDetails>
                     <LogoutBtn onClick={logout}>Выйти из аккаунта</LogoutBtn>
@@ -114,6 +116,22 @@ function ProfilePage() {
         </>
     );
 }
+
+const NewPostBtn = styled.div`
+    display: block;
+    line-height: 46px;
+    width: 210px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 18px;
+    color: var(--main-text-light-gray);
+    background-color: #2c7c48;
+    padding-left: 12px;
+    text-align: start;
+    user-select: none;
+    cursor: pointer;
+    margin: 2px;
+`
 
 const ProfileInnerDetails = styled.div`
     display: flex;
@@ -137,6 +155,7 @@ const JustInfo = styled.div`
 `
 
 const LogoutBtn = styled.a`
+    margin-bottom: 60px;
     text-decoration: none;
     background-color: #9b2b2b;
     color: var(--main-text-light-gray);

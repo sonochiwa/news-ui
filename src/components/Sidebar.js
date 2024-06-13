@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SidebarBtn from "./SidebarBtn";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {instance} from "../services/axios-instance";
 
 function Sidebar() {

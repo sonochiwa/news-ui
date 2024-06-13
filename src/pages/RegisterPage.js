@@ -17,7 +17,6 @@ function RegisterPage() {
             return
         }
 
-        console.log(login, password)
         instance.post("/auth/sign-up", {login: login, password: password})
             .then(res => {
                 if (res.status === 200) {
@@ -55,8 +54,8 @@ function RegisterPage() {
                 <TextAuth>Регистрация</TextAuth>
                 <Authorization id={"auth"}>
                     <Input id={"profile_input"} placeholder={"Почта"} onChange={(e) => setLogin(e.target.value)} value={login}/>
-                    <Input id={"profile_input"}placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)} value={password}/>
-                    <Input id={"profile_input"}placeholder={"Подтверждение пароля"} type={"password"} onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
+                    <Input id={"profile_input"} placeholder={"Пароль"} type={"password"} onChange={(e) => setPassword(e.target.value)} value={password}/>
+                    <Input id={"profile_input"} placeholder={"Подтверждение пароля"} type={"password"} onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
                     <GoToRegisterText>
                         Есть аккаунт? <GoToRegisterLink href={"/sign-in"}>Войти</GoToRegisterLink>
                     </GoToRegisterText>
@@ -167,7 +166,6 @@ const Error = styled.p`
     margin-bottom: -10px;
     color: red;
 `
-
 
 const GoToRegisterLink = styled.a`
     color: var(--color-href);

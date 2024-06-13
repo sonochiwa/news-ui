@@ -59,6 +59,14 @@ body {
     display: none;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--main-dark-gray);
+    padding-bottom: 20px;
+}
+
 #sidebar_btn {
     white-space: nowrap;
     overflow: hidden;
@@ -269,4 +277,18 @@ body {
     #auth {
         width: 100%;
     }
+}
+
+#content_id {
+    margin-bottom: 60px;
+}
+
+.footer {
+    margin-top: 100%;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
 }
