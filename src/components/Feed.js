@@ -98,6 +98,7 @@ const RightWrapper = styled.div`
 `
 
 const Delete = styled.div`
+    margin-left: 10px;
 `
 
 const TitleWrapper = styled.div`
