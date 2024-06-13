@@ -12,13 +12,17 @@ function Feed({filter, countries}) {
     let postsLink = '/api/posts?';
 
     let user = Cookies.get('user')
-    let parsedUser = null
-
+    let is_admin = false
     try {
-        parsedUser = JSON.parse(user)
-    } catch {
+        let parsedUser = JSON.parse(user)
 
+        if (parsedUser.is_admin = true) {
+            is_admin = true
+        }
+    } catch {
+        is_admin = false
     }
+
 
     if (filter != null) {
         postsLink += `filter=${filter}&`;
@@ -73,7 +77,7 @@ function Feed({filter, countries}) {
                 <Post id={"post"} key={post.id}>
                     <TitleWrapper>
                         <Title>{post.title}</Title>
-                        {parsedUser.is_admin ? <Delete onClick={() => deletePost(post.id)}>❌</Delete> : null}
+                        {is_admin ? <Delete onClick={() => deletePost(post.id)}>❌</Delete> : <></>}
                     </TitleWrapper>
                     <InfoWrapper>
                         <CreatedAt>{formatDate(post.created_at)}</CreatedAt>
