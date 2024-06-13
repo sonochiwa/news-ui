@@ -5,10 +5,14 @@ import {useLocation} from "react-router-dom";
 import Cookies from "js-cookie";
 
 function Feed({filter, countries}) {
+
     const [posts, setPosts] = useState([]);
     const location = useLocation();
     let currentPath = location.pathname.substring(1, location.pathname.length);
     let postsLink = '/api/posts?';
+
+    let user = Cookies.get('user')
+    let parsedUser = JSON.parse(user)
 
     if (filter != null) {
         postsLink += `filter=${filter}&`;
@@ -48,16 +52,28 @@ function Feed({filter, countries}) {
         return date.toLocaleString();
     }
 
+
+
+    const deletePost = (id) => {
+        instance.delete(`/api/posts/${id}`)
+            .then(() => {
+                window.location.reload();
+            })
+    }
+
     return (
         <Root id={"feed"}>
             {posts.length > 0 ? posts.map(post => (
                 <Post id={"post"} key={post.id}>
-                    <Title>{post.title}</Title>
+                    <TitleWrapper>
+                        <Title>{post.title}</Title>
+                        {parsedUser.is_admin && <Delete onClick={() => deletePost(post.id)}>❌</Delete>}
+                    </TitleWrapper>
                     <InfoWrapper>
                         <CreatedAt>{formatDate(post.created_at)}</CreatedAt>
-                        <div>
-                            <Category>#{post.category}</Category> <Category>#{post.country}</Category>
-                        </div>
+                        <RightWrapper>
+                            <Category>#{post.category}</Category><Category>#{post.country}</Category>
+                        </RightWrapper>
                     </InfoWrapper>
                     <Body>{post.body}</Body>
                 </Post>
@@ -65,6 +81,19 @@ function Feed({filter, countries}) {
         </Root>
     );
 }
+
+const RightWrapper = styled.div`
+    display: flex;
+    gap: 5px;
+`
+
+const Delete = styled.div`
+`
+
+const TitleWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
 const Root = styled.div`
     margin-left: 244px;
@@ -93,6 +122,7 @@ const PostsNotFound = styled.p`
 const InfoWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
     width: 100%;
 `;
 
