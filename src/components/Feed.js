@@ -37,7 +37,7 @@ function Feed({filter, countries}) {
     }
 
     let countryCookies = Cookies.get('country');
-    if (countryCookies !== 'all') {
+    if (countryCookies != null && countryCookies !== 'all') {
         postsLink += `country=${countryCookies}&`;
     }
 

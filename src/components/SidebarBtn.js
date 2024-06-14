@@ -6,7 +6,7 @@ function SidebarBtn({title}) {
 
     function handleClick() {
         if (title==="All") {
-            navigate(`/All`, {state: {filter: ''}});
+            navigate(`/`, {state: {filter: ''}});
             return
         }
 
@@ -19,7 +19,7 @@ function SidebarBtn({title}) {
 
     return (
         <Root id={"sidebar_btn"} type="button" onClick={handleClick} style={
-            currentPath === title  ? {outline: "2px solid #6c6c6c"}  : null}>
+            currentPath === title || title === 'All' && currentPath === "" ? {outline: "2px solid #6c6c6c"} : null}>
             <span id={"sidebar_btn_text"} title={title}>{title}</span>
         </Root>
     )
