@@ -16,7 +16,7 @@ function Feed({filter, countries}) {
     try {
         let parsedUser = JSON.parse(user)
 
-        if (parsedUser.is_admin = true) {
+        if (parsedUser.is_admin === true) {
             is_admin = true
         }
     } catch {
